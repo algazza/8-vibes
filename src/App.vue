@@ -26,7 +26,7 @@ const formData = useLocalStorage("form-data", {
   payment: "",
 });
 
-const isNewCheckout = useLocalStorage<boolean>("isNew", false);
+const isNewCheckout = useLocalStorage<boolean>("isNew", true);
 </script>
 
 <template>
