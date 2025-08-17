@@ -86,7 +86,7 @@ const handleClear = () => {
 
       <div v-if="data.payment === 'Transfer'">
         <span class="font-bold">Transfer Mandiri</span> <br />
-        1360036619739 a/n Al Ghaza
+        1360036619739 a/n FADHIL AL GHAZA ASWA
       </div>
 
       <div v-else-if="data.payment === 'QRIS'">
