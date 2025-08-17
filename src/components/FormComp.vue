@@ -142,13 +142,14 @@ const onSubmit = handleSubmit((values, ctx) => {
     >
       <FormItem>
         <FormLabel>Nomor Handphone</FormLabel>
-        <FormDescription class="text-sm text-muted-foreground">format harus +62</FormDescription>
+        <FormDescription class="text-sm text-muted-foreground">format harus +62xxxxxxxxx</FormDescription>
         <FormControl>
           <Input
             type="text"
             v-bind="componentField"
-            placeholder="+62xxxxxxxxxxxx"
+            placeholder="+62xxxxxxxxx"
             name="entry.1824288762"
+            default-value="+62"
           />
         </FormControl>
       </FormItem>

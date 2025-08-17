@@ -11,6 +11,7 @@ import table from "@/assets/tabel.png";
 import fronts from "@/assets/fronts.png";
 import backs from "@/assets/backs.png";
 import shirt from "@/assets/shirt.png";
+import header from '@/assets/header.png'
 import FormSuccess from "./components/FormSuccess.vue";
 import { useLocalStorage } from "@vueuse/core";
 
@@ -31,6 +32,10 @@ const isNewCheckout = useLocalStorage<boolean>("isNew", true);
 
 <template>
   <iframe name="hidden_iframe" style="display: none"></iframe>
+
+  <header class="flex justify-center pt-4">
+    <img :src="header" alt="header" class="w-60 lg:w-80">
+  </header>
   
   <main
     class="py-8 md:px-8 flex flex-col lg:flex-row gap-8 items-center justify-center"
