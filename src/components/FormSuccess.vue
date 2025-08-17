@@ -150,11 +150,11 @@ const handleClear = () => {
     </div>
 
     <div class="w-full">
-      <h2 class="text-xl font-bold mt-8 mb-2">
+      <h2 class="text-lg md:text-xl font-bold mt-6 mb-2 text-center">
         Terimakasih sudah belanja di osis8_store ;)
       </h2>
       <p class="text-gray-600 text-sm">
-        Tanggal baju siap diambil akan kami umumkan lewat Instagram @osis8_store atau update di website ini. Ditunggu kabar resminya ya!
+        Tanggal baju siap diambil akan kami umumkan lewat Instagram <a href="https://www.instagram.com/osis8_store/" class="font-bold">@osis8_store</a> atau update di website ini. Ditunggu kabar resminya ya!
       </p>
       <AlertDialog>
         <AlertDialogTrigger class="w-full mt-4">
