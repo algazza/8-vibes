@@ -1,4 +1,3 @@
-import { toTypedSchema } from "@vee-validate/zod";
 import z from "zod";
 
 export const positionArray = ["Siswa", "Guru / Staff", "Alumni"];
@@ -53,7 +52,7 @@ export const sizeArray = [
   "6XL",
   "7XL",
 ];
-export const sleeveArray = ["Panjang", "Pendek"];
+export const sleeveArray = ["Pendek", "Panjang"];
 export const paymentArray = ["Cash", "QRIS", "Transfer"];
 
 const PositionEnum = z.enum(positionArray).refine((val) => !!val, {
@@ -72,14 +71,13 @@ const PaymentEnum = z.enum(paymentArray).refine((val) => !!val, {
   message: "Pembayaran harus diisi",
 });
 
-export const formSchema = toTypedSchema(
-  z.object({
-    name: z.string().nonempty("Nama harus diisi"),
-    position: PositionEnum,
-    classes: ClassEnum,
-    number: z.string().regex(/^\+62\d+$/, "Nomor harus diawali dengan +62"),
-    size: SizeEnum,
-    sleeve: SleeveEnum,
-    payment: PaymentEnum,
-  })
-);
+export const formSchema = z.object({
+  name: z.string().nonempty("Nama harus diisi"),
+  position: PositionEnum,
+  classes: ClassEnum,
+  number: z.string().regex(/^\+62\d+$/, "Nomor harus diawali dengan +62"),
+  size: SizeEnum,
+  sleeve: SleeveEnum,
+  payment: PaymentEnum,
+})
+

@@ -20,11 +20,25 @@ import {
   SelectValue,
 } from "./ui/select";
 import { computed, watch } from "vue";
+import { useLocalStorage } from "@vueuse/core";
+import { toTypedSchema } from "@vee-validate/zod";
+import { totalPrice } from "@/lib/totalPrice";
 
 const urlAction = import.meta.env.VITE_API_FORM
 
-const { isFieldDirty, meta } = useForm({
-  validationSchema: formSchema,
+const formData = useLocalStorage('form-data', {
+  name: '',
+  position: '',
+  classes: '',
+  number: '',
+  size: '',
+  sleeve: '',
+  payment: '',
+})
+const isNewCheckout = useLocalStorage<boolean>('isNew', true)
+
+const { isFieldDirty, handleSubmit, meta } = useForm({
+  validationSchema: toTypedSchema(formSchema),
 });
 
 const { value: position } = useField<string>("position");
@@ -35,27 +49,8 @@ const { value: sleeve } = useField<string>("sleeve");
 watch(position, (newVal) => {
   if (newVal === "Guru / Staff" || newVal === "Alumni") {
     classes.value = "Lainnya";
-  } else {
-    classes.value = "";
   }
 });
-
-const totalPrice = (size?: string, sleeve?: string) => {
-  let price = 70000
-
-  if (size && size.endsWith("XL")) {
-    const num = parseInt(size);
-    if (!isNaN(num)) {
-      price = 70000 + (num - 1) * 5000;
-    }
-  }
-
-  if(sleeve === 'Panjang'){
-    price += 5000
-  }
-
-  return price
-}
 
 const fixPrice = computed(() => {
   if (!size.value || !sleeve.value) return 0
@@ -63,10 +58,20 @@ const fixPrice = computed(() => {
 })
 
 
+const onSubmit = handleSubmit((values, ctx) => {
+  console.log(values)
+  formData.value = values
+
+  const form = ctx.evt?.target as HTMLFormElement
+  form.submit()
+
+  isNewCheckout.value = false
+})
+
 </script>
 
 <template>
-  <form class="w-full space-y-6" :action="urlAction">
+  <form class="w-full space-y-6" @submit="onSubmit" :action="urlAction" target="hidden_iframe">
     <FormField
       v-slot="{ componentField }"
       name="name"
