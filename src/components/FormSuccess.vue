@@ -23,7 +23,7 @@ const { data } = defineProps<{
   data: FormDataType;
 }>();
 
-const isNewCheckout = useLocalStorage('isNew', false)
+const isNewCheckout = useLocalStorage("isNew", false);
 
 const fixPrice = computed(() => {
   if (!data.size || !data.sleeve) return 0;
@@ -36,8 +36,8 @@ const depositePrice = computed(() => {
 });
 
 const handleClear = () => {
-  localStorage.removeItem("form-data")
-  isNewCheckout.value = true
+  localStorage.removeItem("form-data");
+  isNewCheckout.value = true;
 };
 </script>
 
@@ -85,7 +85,7 @@ const handleClear = () => {
       </div>
 
       <div v-if="data.payment === 'Transfer'">
-        <span class="font-bold">Transfer Mandiri</span>
+        <span class="font-bold">Transfer Mandiri</span> <br />
         1360036619739 a/n Al Ghaza
       </div>
 
@@ -100,7 +100,7 @@ const handleClear = () => {
         <span class="font-bold">Pembayaran cash diberikan ke salah satu:</span>
         <a
           href="https://wa.me/62895635004580"
-          class="px-4 py-2 border rounded-md bg-[#25D366] text-white font-semibold flex gap-4 items-center"
+          class="px-4 py-2 border rounded-md bg-[#25D366] text-white font-semibold flex gap-4 items-center mt-2"
         >
           <div class="rounded-full border-2 border-white p-2">
             <svg
@@ -150,16 +150,20 @@ const handleClear = () => {
     </div>
 
     <div class="w-full">
-      <h2 class="text-xl text-center font-bold mt-4">
+      <h2 class="text-xl font-bold mt-8 mb-2">
         Terimakasih sudah belanja di osis8_store ;)
       </h2>
+      <p class="text-gray-600 text-sm">
+        Tanggal baju siap diambil akan kami umumkan lewat Instagram @osis8_store atau update di website ini. Ditunggu kabar resminya ya!
+      </p>
       <AlertDialog>
-        <AlertDialogTrigger class="w-full mt-2">
+        <AlertDialogTrigger class="w-full mt-4">
           <Button class="w-full">Pesan Lagi</Button>
         </AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Apakah kamu yakin membeli ulang?</AlertDialogTitle
+            <AlertDialogTitle
+              >Apakah kamu yakin membeli ulang?</AlertDialogTitle
             >
             <AlertDialogDescription>
               Data sebelumnya tetap ada dan pesanan selanjutnya merupakan
