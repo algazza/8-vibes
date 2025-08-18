@@ -78,9 +78,9 @@ const onSubmit = handleSubmit((values, ctx) => {
       :validate-on-blur="!isFieldDirty"
     >
       <FormItem>
-        <FormLabel>Nama</FormLabel>
+        <FormLabel>Nama Lengkap</FormLabel>
         <FormControl>
-          <Input type="text" v-bind="componentField" placeholder="John Doe" name="entry.1881718673"/>
+          <Input type="text" v-bind="componentField" placeholder="Nama Lengkap" name="entry.1881718673"/>
         </FormControl>
       </FormItem>
     </FormField>
