@@ -49,7 +49,6 @@ export const sizeArray = [
   "3XL",
   "4XL",
   "5XL",
-  "6XL",
 ];
 export const sleeveArray = ["Pendek", "Panjang"];
 export const paymentArray = ["Cash", "QRIS", "Transfer"];
