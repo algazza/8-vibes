@@ -127,8 +127,9 @@ const handleClear = () => {
         </div>
       </div>
 
-      <div v-else>
-        <span class="font-bold">Pembayaran cash diberikan ke salah satu:</span>
+      <div>
+        <span class="font-bold" v-if="data.payment === 'Cash'">Pembayaran cash diberikan ke salah satu:</span>
+        <span class="font-bold" v-else>Bukti Pembayaran bisa dikirim ke salah satu:</span>
         <a
           href="https://wa.me/62895635004580"
           class="px-6 py-2 border rounded-md bg-[#25D366] text-white font-semibold flex gap-4 items-center mt-2 justify-center"

@@ -41,7 +41,9 @@ const isNewCheckout = useLocalStorage<boolean>("isNew", true);
     class="py-8 md:px-8 flex flex-col lg:flex-row gap-8 items-center justify-center"
   >
     <div class="lg:max-w-1/2 px-12" v-if="isNewCheckout">
-      <Carousel>
+      <Carousel :opts="{
+        loop: true
+      }">
         <CarouselContent class="items-center">
           <CarouselItem
             v-for="img in imageArray"
