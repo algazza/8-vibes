@@ -1,21 +1,7 @@
 <script setup lang="ts">
-import FormComp from "./components/FormComp.vue";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import table from "@/assets/tabel.png";
-import fronts from "@/assets/fronts.png";
-import backs from "@/assets/backs.png";
-import shirt from "@/assets/shirt.png";
 import header from '@/assets/header.png'
 import FormSuccess from "./components/FormSuccess.vue";
 import { useLocalStorage } from "@vueuse/core";
-
-const imageArray = [shirt, fronts, backs, table];
 
 const formData = useLocalStorage("form-data", {
   name: "",
