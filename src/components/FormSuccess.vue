@@ -1,29 +1,15 @@
 <script setup lang="ts">
 import qris from "@/assets/QRIS.jpeg";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "./ui/alert-dialog";
-import { Button } from "./ui/button";
 import type { formSchema } from "@/type";
 import type z from "zod";
 import { totalPrice } from "@/lib/totalPrice";
 import { computed } from "vue";
-import { useLocalStorage } from "@vueuse/core";
+
 type FormDataType = z.infer<typeof formSchema>;
 
 const { data } = defineProps<{
   data: FormDataType;
 }>();
-
-const isNewCheckout = useLocalStorage("isNew", false);
 
 const fixPrice = computed(() => {
   if (!data.size || !data.sleeve) return 0;
@@ -34,11 +20,6 @@ const depositePrice = computed(() => {
   if (!data.size || !data.sleeve) return 0;
   return totalPrice(data.size, data.sleeve) / 2;
 });
-
-const handleClear = () => {
-  localStorage.removeItem("form-data");
-  isNewCheckout.value = true;
-};
 </script>
 
 <template>
@@ -111,7 +92,7 @@ const handleClear = () => {
         <p class="text-sm">
           DP minimal sebelum 30 Agustus 2025, setelahnya akan dianggap hangus.
           <br />
-          Pelunasan sebelum 6 September 2025.
+          Pelunasan sebelum 18 September 2025.
         </p>
       </div>
 
@@ -128,8 +109,12 @@ const handleClear = () => {
       </div>
 
       <div>
-        <span class="font-bold" v-if="data.payment === 'Cash'">Pembayaran cash diberikan ke salah satu:</span>
-        <span class="font-bold" v-else>Bukti Pembayaran bisa dikirim ke salah satu:</span>
+        <span class="font-bold" v-if="data.payment === 'Cash'"
+          >Pembayaran cash diberikan ke salah satu:</span
+        >
+        <span class="font-bold" v-else
+          >Bukti Pembayaran bisa dikirim ke salah satu:</span
+        >
         <a
           href="https://wa.me/62895635004580"
           class="px-6 py-2 border rounded-md bg-[#25D366] text-white font-semibold flex gap-4 items-center mt-2 justify-center"
@@ -174,32 +159,10 @@ const handleClear = () => {
         Terimakasih sudah belanja di osis8_store ;)
       </h2>
       <p class="text-gray-600 text-sm">
-        Tanggal baju siap diambil akan kami umumkan lewat Instagram
-        <a href="https://www.instagram.com/osis8_store/" class="font-bold"
-          >@osis8_store</a
-        >
-        atau update di website ini. Ditunggu kabar resminya ya!
+        Yeeyy ada kabar baik nihh, kaos merch snapan akan ready tanggal
+        <span class="font-bold">22 September 2025</span>, jika ada perubahan
+        tanggal terbaru akan kami kabari lebih lanjut. Terimakasihh ;)
       </p>
-      <AlertDialog>
-        <AlertDialogTrigger class="w-full mt-4">
-          <Button class="w-full">Pesan Lagi</Button>
-        </AlertDialogTrigger>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle
-              >Apakah kamu yakin membeli ulang?</AlertDialogTitle
-            >
-            <AlertDialogDescription>
-              Data sebelumnya tetap ada dan pesanan selanjutnya merupakan
-              pesanan baru, yakin untuk membeli lagi?
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>Batal</AlertDialogCancel>
-            <AlertDialogAction :onclick="handleClear">Iya</AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
     </div>
   </section>
 </template>
